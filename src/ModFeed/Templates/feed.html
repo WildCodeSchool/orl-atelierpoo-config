@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Webpage</title>
+</head>
+<body>
+<h1>Feed</h1>
+<ul>
+{% for article in articles %}
+<li>{{ article.title }}</li>
+{% endfor %}
+</ul>
+</body>
+</html>
