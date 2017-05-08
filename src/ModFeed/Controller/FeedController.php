@@ -1,6 +1,8 @@
 <?php
 namespace ModFeed\Controller;
 
+use ModFeed\Config\ConfigInterface;
+use ModFeed\Config\ConfigXml;
 use Vinelab\Rss\Rss;
 
 /**
@@ -11,12 +13,41 @@ use Vinelab\Rss\Rss;
  */
 class FeedController extends BaseControler
 {
+    /**
+     * @var ConfigInterface
+     */
+    private $config;
+
+    /**
+     * @return ConfigInterface
+     */
+    public function getConfig(): ConfigInterface
+    {
+        return $this->config;
+    }
+
+    /**
+     * @param ConfigInterface $config
+     * @return FeedController
+     */
+    public function setConfig(ConfigInterface $config): FeedController
+    {
+        $this->config = $config;
+        return $this;
+    }
+
+    public function __construct(\Twig_Environment $twig, ConfigXml $config)
+    {
+        parent::__construct($twig);
+        $this->setConfig($config);
+    }
+
     public function getFeedAction()
     {
         $rss = new Rss();
 
         // Appel static du flux rss
-        $feed = $rss->feed('http://feeds.reuters.com/news/artsculture');
+        $feed = $rss->feed($this->getConfig()->getUrl());
 
         // Vue
         $template = $this->getView()->load('feed.html');

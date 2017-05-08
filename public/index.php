@@ -41,7 +41,9 @@ switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::FOUND:
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
-        $controller = new $handler['class']($twig);
+        // Chargement config
+        $config = new \ModFeed\Config\ConfigXml(__DIR__.'/../config/feed.xml');
+        $controller = new $handler['class']($twig, $config);
         $html = call_user_func([$controller, $handler['method']]);
         break;
 }
