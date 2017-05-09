@@ -11,12 +11,12 @@ use Vinelab\Rss\Rss;
  */
 class FeedController extends BaseControler
 {
-    public function getFeedAction()
+    public function getFeedAction(array $config)
     {
         $rss = new Rss();
 
         // Appel static du flux rss
-        $feed = $rss->feed('http://feeds.reuters.com/news/artsculture');
+        $feed = $rss->feed($config['url']);
 
         // Vue
         $template = $this->getView()->load('feed.html');

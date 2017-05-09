@@ -6,6 +6,7 @@
  * Time: 14:37
  */
 require __DIR__.'/../vendor/autoload.php';
+$config = include __DIR__.'/../config/feed.php';
 
 // Twig
 $loader = new Twig_Loader_Filesystem(__DIR__.'/../src/ModFeed/Templates');
@@ -42,7 +43,7 @@ switch ($routeInfo[0]) {
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
         $controller = new $handler['class']($twig);
-        $html = call_user_func([$controller, $handler['method']]);
+        $html = call_user_func([$controller, $handler['method']], $config);
         break;
 }
 
