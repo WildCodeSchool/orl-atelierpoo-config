@@ -58,6 +58,13 @@ abstract class ConfigAbstract implements ConfigInterface
         return $this;
     }
 
+    public function __construct($configFile)
+    {
+        if (!file_exists($configFile)) throw new \Exception("Fichier de config introuvable.");
+
+        $this->setConfigFile($configFile);
+    }
+
     public function load()
     {
         $this->implementLoading();

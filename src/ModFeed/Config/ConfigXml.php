@@ -9,13 +9,6 @@ namespace ModFeed\Config;
  */
 class ConfigXml extends ConfigAbstract
 {
-    public function __construct($configFile)
-    {
-        if (!file_exists($configFile)) throw new \Exception("Fichier XML introuvable.");
-
-        $this->setConfigFile($configFile);
-    }
-
     protected function implementLoading()
     {
         $xml = simplexml_load_file($this->getConfigFile());

@@ -47,6 +47,7 @@ class FeedController extends BaseControler
         $rss = new Rss();
 
         // Appel static du flux rss
+//        $this->getConfig()->load();
         $feed = $rss->feed($this->getConfig()->getUrl());
 
         // Vue

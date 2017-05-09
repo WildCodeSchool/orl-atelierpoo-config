@@ -9,13 +9,6 @@ namespace ModFeed\Config;
  */
 class ConfigIni extends ConfigAbstract
 {
-    public function __construct($configFile)
-    {
-        if (!file_exists($configFile)) throw new \Exception("Fichier XML introuvable.");
-
-        $this->setConfigFile($configFile);
-    }
-
     protected function implementLoading()
     {
         $ini = parse_ini_file($this->getConfigFile());
