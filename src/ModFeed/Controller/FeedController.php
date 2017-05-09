@@ -36,7 +36,7 @@ class FeedController extends BaseControler
         return $this;
     }
 
-    public function __construct(\Twig_Environment $twig, ConfigXml $config)
+    public function __construct(\Twig_Environment $twig, ConfigInterface $config)
     {
         parent::__construct($twig);
         $this->setConfig($config);
