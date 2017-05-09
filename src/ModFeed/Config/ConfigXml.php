@@ -16,7 +16,7 @@ class ConfigXml extends ConfigAbstract
         $this->setConfigFile($configFile);
     }
 
-    protected function _load()
+    protected function implementLoading()
     {
         $xml = simplexml_load_file($this->getConfigFile());
 

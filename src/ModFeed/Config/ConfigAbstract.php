@@ -60,8 +60,8 @@ abstract class ConfigAbstract implements ConfigInterface
 
     public function load()
     {
-        $this->_load();
+        $this->implementLoading();
     }
 
-    abstract protected function _load();
+    abstract protected function implementLoading();
 }
